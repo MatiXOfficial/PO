@@ -17,6 +17,7 @@ public enum Direction
         else
             return Direction.NAN;
     }
+
     public static Direction[] toDirs(String[] args)
     {
         Direction[] dirs = new Direction[args.length];
