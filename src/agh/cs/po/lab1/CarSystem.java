@@ -9,6 +9,12 @@ public class CarSystem
         System.out.println("Start");
         run(Direction.toDirs(args));
         System.out.println("Stop");
+        test();
+    }
+
+    public static void test()
+    {
+        System.out.println("TEST");
     }
 
     public static void run(Direction[] dirs)
