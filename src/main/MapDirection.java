@@ -1,7 +1,3 @@
-package agh.cs.lab2;
-
-import java.util.Vector;
-
 public enum MapDirection
 {
     NORTH, EAST, SOUTH, WEST;
