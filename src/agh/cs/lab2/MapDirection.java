@@ -1,33 +1,35 @@
+package agh.cs.lab2;
+
 public enum MapDirection
 {
     NORTH, EAST, SOUTH, WEST;
 
     public String toString()
     {
-        if (this == null)
-            return "ERROR";
-        else if (this == MapDirection.NORTH)
+        if (this == MapDirection.NORTH)
             return "Polnoc";
         else if (this == MapDirection.SOUTH)
             return "Poludnie";
         else if (this == MapDirection.WEST)
             return "Zachod";
-        else //if (dir == MapDirection.EAST)
+        else if (this == MapDirection.EAST)
             return "Wschod";
+        else
+            return null;
     }
 
     public MapDirection next()
     {
-        if (this == null)
-            return null;
-        else if (this == MapDirection.NORTH)
+        if (this == MapDirection.NORTH)
             return MapDirection.EAST;
         else if (this == MapDirection.EAST)
             return MapDirection.SOUTH;
         else if (this == MapDirection.SOUTH)
             return MapDirection.WEST;
-        else //if (dir == MapDirection.WEST)
+        else if (this == MapDirection.WEST)
             return MapDirection.NORTH;
+        else
+            return null;
     }
 
     public MapDirection previous()
@@ -44,7 +46,7 @@ public enum MapDirection
             return MapDirection.NORTH;
     }
 
-    public Vector2d toUnitVector(MapDirection dir)
+    public Vector2d toUnitVector()
     {
         if (this == null)
             return null;

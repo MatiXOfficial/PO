@@ -1,3 +1,6 @@
+package lab2;
+
+import agh.cs.lab2.Vector2d;
 import org.junit.Assert;
 import org.junit.Test;
 

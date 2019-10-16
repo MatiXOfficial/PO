@@ -1,3 +1,5 @@
+package agh.cs.lab2;
+
 public class Vector2d
 {
     public final int x;
@@ -65,7 +67,7 @@ public class Vector2d
             return false;
     }
 
-    Vector2d opposite()
+    public Vector2d opposite()
     {
         return new Vector2d(-this.x, -this.y);
     }

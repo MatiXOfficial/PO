@@ -1,8 +1,8 @@
-package agh.cs.po.lab1;
+package agh.cs.lab1;
 
 public enum Direction
 {
-    FORWARD, LEFT, RIGHT, BACKWARD, NAN;
+    FORWARD, LEFT, RIGHT, BACKWARD;
 
     static Direction fromString(String arg)
     {
@@ -15,7 +15,7 @@ public enum Direction
         else if (arg.equals("b"))
             return Direction.BACKWARD;
         else
-            return Direction.NAN;
+            return null;
     }
 
     public static Direction[] toDirs(String[] args)

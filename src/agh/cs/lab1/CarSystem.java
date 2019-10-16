@@ -1,6 +1,4 @@
-package agh.cs.po.lab1;
-
-import java.sql.SQLOutput;
+package agh.cs.lab1;
 
 public class CarSystem
 {
@@ -15,13 +13,13 @@ public class CarSystem
     {
         for (Direction dir : dirs)
         {
-            if (dir.equals(Direction.FORWARD))
+            if (dir == Direction.FORWARD)
                 System.out.println("Going forward...");
-            else if (dir.equals(Direction.LEFT))
+            else if (dir == Direction.LEFT)
                 System.out.println("Going backward...");
-            else if (dir.equals(Direction.RIGHT))
+            else if (dir == Direction.RIGHT)
                 System.out.println("Going right...");
-            else if (dir.equals(Direction.BACKWARD))
+            else if (dir == Direction.BACKWARD)
                 System.out.println("Going left...");
             else
             {
