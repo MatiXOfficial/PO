@@ -18,7 +18,7 @@ public class MapDirectionTest
         Assert.assertEquals(testDir.next(), MapDirection.NORTH);
     }
 
-    @Test public void previous()
+    @Test public void previousTest()
     {
         MapDirection testDir = MapDirection.NORTH;
         Assert.assertEquals(testDir.previous(), MapDirection.WEST);

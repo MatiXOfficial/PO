@@ -13,25 +13,17 @@ public class Vector2d
 
     public String toString()
     {
-        String result;
-        result = "(" + Integer.toString(this.x) + "," + Integer.toString(this.y) + ")";
-        return result;
+        return "(" + Integer.toString(this.x) + "," + Integer.toString(this.y) + ")";
     }
 
     public boolean precedes(Vector2d other)
     {
-        if (this.x <= other.x && this.y <= other.y)
-            return true;
-        else
-            return false;
+        return (this.x <= other.x && this.y <= other.y);
     }
 
     public boolean follows(Vector2d other)
     {
-        if (this.x >= other.x && this.y >= other.y)
-            return true;
-        else
-            return false;
+        return (this.x >= other.x && this.y >= other.y);
     }
 
     public Vector2d upperRight(Vector2d other)
@@ -71,9 +63,4 @@ public class Vector2d
     {
         return new Vector2d(-this.x, -this.y);
     }
-
-
-
-
-
 }

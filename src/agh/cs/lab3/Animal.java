@@ -37,7 +37,7 @@ public class Animal
             else // if (orientation == MapDirection.EAST)
                 location = new Vector2d(Math.min(location.x + 1, 4), location.y);
         }
-        else // if (direction == MoveDirection.BACKWARD)
+        else if (direction == MoveDirection.BACKWARD)
         {
             if (orientation == MapDirection.NORTH)
                 location = new Vector2d(location.x, Math.max(location.y - 1, 0));
