@@ -51,11 +51,11 @@ public enum MapDirection
         if (this == MapDirection.NORTH)
             return new Vector2d(0, 1);
         else if (this == MapDirection.EAST)
-            return new Vector2d(-1, 0);
+            return new Vector2d(1, 0);
         else if (this == MapDirection.SOUTH)
             return new Vector2d(0, -1);
         else if (this == MapDirection.WEST)
-            return new Vector2d(1, 0);
+            return new Vector2d(-1, 0);
         else
             return null;
     }
