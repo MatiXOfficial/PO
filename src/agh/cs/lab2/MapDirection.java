@@ -7,13 +7,13 @@ public enum MapDirection
     public String toString()
     {
         if (this == MapDirection.NORTH)
-            return "Polnoc";
+            return "N";
         else if (this == MapDirection.SOUTH)
-            return "Poludnie";
+            return "S";
         else if (this == MapDirection.WEST)
-            return "Zachod";
+            return "Z";
         else if (this == MapDirection.EAST)
-            return "Wschod";
+            return "W";
         else
             return null;
     }
