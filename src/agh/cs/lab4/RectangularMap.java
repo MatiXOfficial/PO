@@ -9,12 +9,13 @@ class RectangularMap implements IWorldMap
 {
     private int width;
     private int height;
-    private LinkedList<Animal> animals;
+    public LinkedList<Animal> animals;
 
     public RectangularMap(int width, int height)
     {
         this.width = width;
         this.height = height;
+        animals = new LinkedList<>();
     }
 
     private boolean isInTable(Vector2d position)
@@ -60,14 +61,14 @@ class RectangularMap implements IWorldMap
     {
         for (int i = 0; i < directions.length; i++)
         {
-            animals.get(i % (animals.size() - 1)).move(directions[i]);
+            animals.get(i % animals.size()).move(directions[i]);
         }
     }
 
     public boolean isOccupied(Vector2d position)
     {
         if (!isInTable(position))
-            return false;
+            return true;
         for (Animal animal : animals)
         {
             if (animal.getPosition().equals(position))
@@ -79,7 +80,7 @@ class RectangularMap implements IWorldMap
     public Object objectAt(Vector2d position)
     {
         if (!isInTable(position))
-            return false;
+            return true;
         for (Animal animal : animals)
         {
             if (animal.getPosition().equals(position))

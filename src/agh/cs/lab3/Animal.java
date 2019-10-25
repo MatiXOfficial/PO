@@ -24,7 +24,7 @@ public class Animal
 
     public Animal(IWorldMap map)
     {
-        this(map, new Vector2d(0, 0));
+        this(map, new Vector2d(2, 2));
     }
 
     public String toString()
