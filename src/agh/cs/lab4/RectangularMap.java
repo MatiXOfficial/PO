@@ -5,7 +5,7 @@ import agh.cs.lab3.*;
 
 import java.util.LinkedList;
 
-class RectangularMap implements IWorldMap
+public class RectangularMap implements IWorldMap
 {
     private int width;
     private int height;
