@@ -80,7 +80,7 @@ public class RectangularMap implements IWorldMap
     public Object objectAt(Vector2d position)
     {
         if (!isInTable(position))
-            return true;
+            return null;
         for (Animal animal : animals)
         {
             if (animal.getPosition().equals(position))

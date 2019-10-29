@@ -17,8 +17,8 @@ public class Animal
     public Animal(IWorldMap map, Vector2d initialPosition)
     {
         this.map = map;
-        position = initialPosition;
-        orientation = MapDirection.NORTH;
+        this.position = initialPosition;
+        this.orientation = MapDirection.NORTH;
         map.place(this);
     }
 
