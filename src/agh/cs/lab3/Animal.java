@@ -29,7 +29,7 @@ public class Animal
 
     public String toString()
     {
-        return "location: " + position.toString() + ", orientation: " + orientation.toString();
+        return orientation.toString();
     }
 
     public void move(MoveDirection direction)
@@ -41,13 +41,13 @@ public class Animal
         else if (direction == MoveDirection.FORWARD)
         {
             Vector2d tempPosition = position.add(orientation.toUnitVector());
-            if (!map.isOccupied(tempPosition))
+            if (map.canMoveTo(tempPosition))
                 position = tempPosition;
         }
         else if (direction == MoveDirection.BACKWARD)
         {
             Vector2d tempPosition = position.subtract(orientation.toUnitVector());
-            if (!map.isOccupied(tempPosition))
+            if (map.canMoveTo(tempPosition))
                 position = tempPosition;
         }
     }

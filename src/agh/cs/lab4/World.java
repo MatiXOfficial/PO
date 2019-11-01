@@ -12,7 +12,7 @@ public class World
         map.place(new Animal(map));
         map.place(new Animal(map, new Vector2d(3, 4)));
         map.run(directions);
-        System.out.println(((RectangularMap)map).animals.get(0).toString());
-        System.out.println(((RectangularMap)map).animals.get(1).toString());
+        System.out.println(((RectangularMap)map).getAnimal(0).toString());
+        System.out.println(((RectangularMap)map).getAnimal(1).toString());
     }
 }
