@@ -1,11 +1,3 @@
-package agh.cs.lab5;
-
-import agh.cs.lab2.MoveDirection;
-import agh.cs.lab2.Vector2d;
-import agh.cs.lab3.Animal;
-import agh.cs.lab3.OptionParser;
-import agh.cs.lab4.IWorldMap;
-
 import java.util.LinkedList;
 
 public class World

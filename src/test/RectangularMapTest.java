@@ -1,8 +1,3 @@
-package lab4;
-
-import agh.cs.lab2.*;
-import agh.cs.lab3.*;
-import agh.cs.lab4.*;
 import org.junit.Assert;
 import org.junit.Test;
 

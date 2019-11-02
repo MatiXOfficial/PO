@@ -1,8 +1,3 @@
-package agh.cs.lab4;
-
-import agh.cs.lab2.*;
-import agh.cs.lab3.*;
-
 import java.util.LinkedList;
 
 public class RectangularMap implements IWorldMap
