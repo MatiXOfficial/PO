@@ -1,11 +1,8 @@
 public class Animal
 {
+    protected Vector2d position;
     private MapDirection orientation;
-    private Vector2d position;
     private IWorldMap map;
-
-    public MapDirection getOrientation() {return orientation;}
-    public Vector2d getPosition() {return position;}
 
     public Animal(IWorldMap map, Vector2d initialPosition)
     {
@@ -14,6 +11,13 @@ public class Animal
         this.orientation = MapDirection.NORTH;
         map.place(this);
     }
+
+    public Vector2d getPosition()
+    {
+        return this.position;
+    }
+
+    public MapDirection getOrientation() {return orientation;}
 
     public Animal(IWorldMap map)
     {

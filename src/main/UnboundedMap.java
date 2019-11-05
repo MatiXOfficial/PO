@@ -1,8 +1,7 @@
 import java.util.LinkedList;
 
-public class UnboundedMap implements IWorldMap
+public class UnboundedMap extends AbstractWorldMap
 {
-    public LinkedList<Animal> animals;
     public LinkedList<Rock> rocks;
 
     public UnboundedMap(LinkedList<Rock> rocks)
@@ -15,18 +14,6 @@ public class UnboundedMap implements IWorldMap
     {
         this.rocks = new LinkedList<>();
         animals = new LinkedList<>();
-    }
-
-    public Animal getAnimal(int pos)
-    {
-        if (pos >= animals.size())
-            return null;
-        return animals.get(pos);
-    }
-
-    public int getAnimalSize()
-    {
-        return animals.size();
     }
 
     public boolean canMoveTo(Vector2d position)
@@ -51,22 +38,6 @@ public class UnboundedMap implements IWorldMap
         {
             animals.get(i % animals.size()).move(directions[i]);
         }
-    }
-
-    public boolean isOccupied(Vector2d position)
-    {
-        for (Animal animal : animals)
-        {
-            if (animal.getPosition().equals(position))
-                return true;
-        }
-
-        for (Rock rock : rocks)
-        {
-            if (rock.getPosition().equals(position))
-                return true;
-        }
-        return false;
     }
 
     public Object objectAt(Vector2d position)

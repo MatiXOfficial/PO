@@ -1,6 +1,6 @@
 public class Rock
 {
-    Vector2d position;
+    protected Vector2d position;
 
     public Rock(Vector2d position)
     {
