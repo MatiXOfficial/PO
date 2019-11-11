@@ -3,17 +3,13 @@ import java.util.LinkedList;
 public abstract class AbstractWorldMap implements IWorldMap
 {
     protected LinkedList<Animal> animals;
+    protected Vector2d lowerLeft;
+    protected Vector2d upperRight;
 
     public AbstractWorldMap()
     {
         animals = new LinkedList<>();
-    }
-
-    public Animal getAnimal(int pos)
-    {
-        if (pos >= animals.size())
-            return null;
-        return animals.get(pos);
+        lowerLeft = new Vector2d(0, 0);
     }
 
     public int getAnimalSize()

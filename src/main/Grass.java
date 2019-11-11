@@ -1,6 +1,6 @@
 public class Grass
 {
-    protected Vector2d position;
+    private Vector2d position;
 
     public Grass(Vector2d position)
     {

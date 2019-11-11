@@ -12,17 +12,17 @@ public class Animal
         map.place(this);
     }
 
+    public Animal(IWorldMap map)
+    {
+        this(map, new Vector2d(2, 2));
+    }
+
     public Vector2d getPosition()
     {
         return this.position;
     }
 
     public MapDirection getOrientation() {return orientation;}
-
-    public Animal(IWorldMap map)
-    {
-        this(map, new Vector2d(2, 2));
-    }
 
     public String toString()
     {

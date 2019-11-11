@@ -8,8 +8,7 @@ public class GrassField extends AbstractWorldMap
     public GrassField(int n)
     {
         super();
-        Vector2d lowerLeft = new Vector2d(0, 0);
-        Vector2d upperRight = new Vector2d((int)Math.sqrt(n*10), (int)Math.sqrt(n*10));
+        upperRight = new Vector2d((int)Math.sqrt(n*10), (int)Math.sqrt(n*10));
         grasses = new LinkedList<Grass>();
         for (int i = 0; i < n; i++)
             addGrass(lowerLeft, upperRight);
@@ -32,7 +31,19 @@ public class GrassField extends AbstractWorldMap
 
     public boolean canMoveTo(Vector2d position)
     {
-        return super.objectAt(position) == null;
+        if (!(super.objectAt(position) == null))
+            return false;
+
+        for (int i = 0; i < grasses.size(); i++)
+        {
+            if (grasses.get(i).getPosition().equals(position))
+            {
+                addGrass(lowerLeft, upperRight);
+                grasses.remove(i);
+                break;
+            }
+        }
+        return true;
     }
 
     public Object objectAt(Vector2d position)
@@ -52,10 +63,10 @@ public class GrassField extends AbstractWorldMap
     public String toString()
     {
         MapVisualizer visualizer = new MapVisualizer(this);
-        return visualizer.draw(lowerLeft(), upperRight());
+        return visualizer.draw(lowerLeftString(), upperRightString());
     }
 
-    private Vector2d lowerLeft()
+    private Vector2d lowerLeftString()
     {
         Vector2d result = new Vector2d(Integer.MAX_VALUE, Integer.MAX_VALUE);
         for (Animal animal : animals)
@@ -70,7 +81,7 @@ public class GrassField extends AbstractWorldMap
         return result;
     }
 
-    private Vector2d upperRight()
+    private Vector2d upperRightString()
     {
         Vector2d result = new Vector2d(Integer.MIN_VALUE, Integer.MIN_VALUE);
         for (Animal animal : animals)
