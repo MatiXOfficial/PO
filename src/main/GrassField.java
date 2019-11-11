@@ -69,7 +69,7 @@ public class GrassField extends AbstractWorldMap
     private Vector2d lowerLeftString()
     {
         Vector2d result = new Vector2d(Integer.MAX_VALUE, Integer.MAX_VALUE);
-        for (Animal animal : animals)
+        for (Animal animal : animals.values())
         {
             result = result.lowerLeft(animal.getPosition());
         }
@@ -84,7 +84,7 @@ public class GrassField extends AbstractWorldMap
     private Vector2d upperRightString()
     {
         Vector2d result = new Vector2d(Integer.MIN_VALUE, Integer.MIN_VALUE);
-        for (Animal animal : animals)
+        for (Animal animal : animals.values())
         {
             result = result.upperRight(animal.getPosition());
         }

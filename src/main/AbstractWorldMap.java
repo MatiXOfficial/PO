@@ -1,14 +1,19 @@
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 public abstract class AbstractWorldMap implements IWorldMap
 {
-    protected LinkedList<Animal> animals;
+    //protected LinkedList<Animal> animals;
+    protected Map<Vector2d, Animal> animals;
+    protected LinkedList<Animal> seq;
     protected Vector2d lowerLeft;
     protected Vector2d upperRight;
 
     public AbstractWorldMap()
     {
-        animals = new LinkedList<>();
+        animals = new HashMap<>();
+        seq = new LinkedList<>();
         lowerLeft = new Vector2d(0, 0);
     }
 
@@ -21,7 +26,8 @@ public abstract class AbstractWorldMap implements IWorldMap
     {
         if (canMoveTo(animal.getPosition()))
         {
-            animals.add(animal);
+            animals.put(animal.getPosition(), animal);
+            seq.add(animal);
             return true;
         }
         else
@@ -32,7 +38,10 @@ public abstract class AbstractWorldMap implements IWorldMap
     {
         for (int i = 0; i < directions.length; i++)
         {
-            animals.get(i % animals.size()).move(directions[i]);
+            Animal animal = seq.get(i % animals.size());
+            animals.remove(animal.getPosition());
+            animal.move(directions[i]);
+            animals.put(animal.getPosition(), animal);
         }
     }
 
@@ -43,7 +52,7 @@ public abstract class AbstractWorldMap implements IWorldMap
 
     public Object objectAt(Vector2d position)
     {
-        for (Animal animal : animals)
+        for (Animal animal : animals.values())
         {
             if (animal.getPosition().equals(position))
                 return animal;

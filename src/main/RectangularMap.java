@@ -4,8 +4,8 @@ public class RectangularMap extends AbstractWorldMap
 {
     public RectangularMap(int width, int height)
     {
+        super();
         upperRight = new Vector2d(width, height);
-        animals = new LinkedList<>();
     }
 
     private boolean isInTable(Vector2d position)
