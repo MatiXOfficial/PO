@@ -26,40 +26,9 @@ public class RectangularMap extends AbstractWorldMap
         return !isOccupied(position);
     }
 
-    public boolean place(Animal animal)
-    {
-        if (isOccupied(animal.getPosition()) || !isInTable(animal.getPosition()))
-            return false;
-        else
-        {
-            animals.add(animal);
-            return true;
-        }
-    }
-
     public String toString()
     {
         MapVisualizer visualizer = new MapVisualizer(this);
         return visualizer.draw(lowerLeft, upperRight);
-    }
-
-    public void run(MoveDirection[] directions)
-    {
-        for (int i = 0; i < directions.length; i++)
-        {
-            animals.get(i % animals.size()).move(directions[i]);
-        }
-    }
-
-    public Object objectAt(Vector2d position)
-    {
-        if (!isInTable(position))
-            return null;
-        for (Animal animal : animals)
-        {
-            if (animal.getPosition().equals(position))
-                return animal;
-        }
-        return null;
     }
 }

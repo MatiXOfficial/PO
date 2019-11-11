@@ -1,8 +1,8 @@
-public class Rock
+public class Grass
 {
     protected Vector2d position;
 
-    public Rock(Vector2d position)
+    public Grass(Vector2d position)
     {
         this.position = position;
     }
@@ -14,6 +14,6 @@ public class Rock
 
     public String toString()
     {
-        return "s";
+        return "*";
     }
 }
