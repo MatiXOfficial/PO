@@ -31,7 +31,7 @@ public class GrassField extends AbstractWorldMap
 
     public boolean canMoveTo(Vector2d position)
     {
-        if (!(super.objectAt(position) == null))
+        if (super.objectAt(position) != null)
             return false;
 
         for (int i = 0; i < grasses.size(); i++)

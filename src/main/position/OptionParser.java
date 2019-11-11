@@ -26,6 +26,10 @@ public class OptionParser
                 dir[j] = MoveDirection.RIGHT;
                 j++;
             }
+            else
+            {
+                throw new IllegalArgumentException(tab[i] + " is not legal move specification");
+            }
         }
         MoveDirection[] result = new MoveDirection[j];
         for (int i = 0; i < j; i++)

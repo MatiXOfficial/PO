@@ -19,13 +19,13 @@ public abstract class AbstractWorldMap implements IWorldMap
 
     public boolean place(Animal animal)
     {
-        if (!canMoveTo(animal.getPosition()))
-            return false;
-        else
+        if (canMoveTo(animal.getPosition()))
         {
             animals.add(animal);
             return true;
         }
+        else
+            throw new IllegalArgumentException(animal.getPosition() + " is already occupied");
     }
 
     public void run(MoveDirection[] directions)

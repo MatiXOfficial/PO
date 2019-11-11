@@ -9,7 +9,6 @@ public class Animal
         this.map = map;
         this.position = initialPosition;
         this.orientation = MapDirection.NORTH;
-        map.place(this);
     }
 
     public Animal(IWorldMap map)
