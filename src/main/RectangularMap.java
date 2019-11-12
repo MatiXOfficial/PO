@@ -19,7 +19,7 @@ public class RectangularMap extends AbstractWorldMap
     {
         if (!isInTable(position))
             return false;
-        return !isOccupied(position);
+        return super.canMoveTo(position);
     }
 
     public String toString()

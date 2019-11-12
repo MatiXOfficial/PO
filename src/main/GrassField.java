@@ -21,7 +21,8 @@ public class GrassField extends AbstractWorldMap
             int x = lowerLeft.x + (int) (Math.random() * (upperRight.x - lowerLeft.x));
             int y = lowerLeft.y + (int) (Math.random() * (upperRight.y - lowerLeft.y));
             Vector2d pos = new Vector2d(x, y);
-            if (objectAt(pos) == null)
+            //if (objectAt(pos) == null)
+            if (!isOccupied(pos))
             {
                 grasses.add(new Grass(pos));
                 return;

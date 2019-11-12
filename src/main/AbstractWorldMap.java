@@ -4,7 +4,6 @@ import java.util.Map;
 
 public abstract class AbstractWorldMap implements IWorldMap
 {
-    //protected LinkedList<Animal> animals;
     protected Map<Vector2d, Animal> animals;
     protected LinkedList<Animal> seq;
     protected Vector2d lowerLeft;
@@ -31,7 +30,7 @@ public abstract class AbstractWorldMap implements IWorldMap
             return true;
         }
         else
-            throw new IllegalArgumentException(animal.getPosition() + " is already occupied");
+            throw new IllegalArgumentException(animal.getPosition() + " is not available");
     }
 
     public void run(MoveDirection[] directions)
@@ -48,6 +47,11 @@ public abstract class AbstractWorldMap implements IWorldMap
     public boolean isOccupied(Vector2d position)
     {
         return objectAt(position) != null;
+    }
+
+    public boolean canMoveTo(Vector2d position)
+    {
+        return !isOccupied(position);
     }
 
     public Object objectAt(Vector2d position)
