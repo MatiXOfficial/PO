@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public abstract class AbstractWorldMap implements IWorldMap
+public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver
 {
     protected Map<Vector2d, Animal> animals;
     protected LinkedList<Animal> seq;
@@ -27,6 +27,7 @@ public abstract class AbstractWorldMap implements IWorldMap
         {
             animals.put(animal.getPosition(), animal);
             seq.add(animal);
+            animal.addObserver(this);
             return true;
         }
         else
@@ -38,9 +39,7 @@ public abstract class AbstractWorldMap implements IWorldMap
         for (int i = 0; i < directions.length; i++)
         {
             Animal animal = seq.get(i % animals.size());
-            animals.remove(animal.getPosition());
             animal.move(directions[i]);
-            animals.put(animal.getPosition(), animal);
         }
     }
 
@@ -62,5 +61,15 @@ public abstract class AbstractWorldMap implements IWorldMap
                 return animal;
         }
         return null;
+    }
+
+    public void positionChanged(Vector2d oldPosition, Vector2d newPosition)
+    {
+        if (!newPosition.equals(oldPosition))
+        {
+            Animal animal = animals.get(oldPosition);
+            animals.remove(oldPosition);
+            animals.put(newPosition, animal);
+        }
     }
 }
