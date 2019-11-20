@@ -74,8 +74,9 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
         return visualizer.draw(mapBoundary.getLowerLeft(), mapBoundary.getUpperRight());
     }
 
-    public void positionChanged(IMapElement animal, Vector2d oldPosition, Vector2d newPosition)
+    public void positionChanged(IMapElement animal, Vector2d oldPosition)
     {
+        Vector2d newPosition = animal.getPosition();
         if (!oldPosition.equals(newPosition))
         {
             animals.remove(oldPosition);

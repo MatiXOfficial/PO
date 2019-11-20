@@ -1,5 +1,3 @@
-import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -50,8 +48,9 @@ public class MapBoundary implements IPositionChangeObserver
         addObject(object);
     }
 
-    public void positionChanged(IMapElement object, Vector2d oldPosition, Vector2d newPosition)
+    public void positionChanged(IMapElement object, Vector2d oldPosition)
     {
+        Vector2d newPosition = object.getPosition();
         if (!newPosition.equals(oldPosition))
         {
             updateObject(object);

@@ -41,6 +41,7 @@ public class GrassField extends AbstractWorldMap
             if (grasses.get(i).getPosition().equals(position))
             {
                 addGrass(lowerLeft, upperRight);
+                mapBoundary.deleteObject(grasses.get(i));
                 grasses.remove(i);
                 break;
             }

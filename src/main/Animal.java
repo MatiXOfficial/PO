@@ -42,8 +42,9 @@ public class Animal extends AbstractMapElement
             Vector2d tempPosition = position.add(orientation.toUnitVector());
             if (map.canMoveTo(tempPosition))
             {
-                positionChanged(tempPosition);
+                Vector2d oldPosition = position;
                 position = tempPosition;
+                positionChanged(oldPosition);
             }
         }
         else if (direction == MoveDirection.BACKWARD)
@@ -51,8 +52,9 @@ public class Animal extends AbstractMapElement
             Vector2d tempPosition = position.subtract(orientation.toUnitVector());
             if (map.canMoveTo(tempPosition))
             {
-                positionChanged(tempPosition);
+                Vector2d oldPosition = position;
                 position = tempPosition;
+                positionChanged(oldPosition);
             }
         }
     }
@@ -67,11 +69,11 @@ public class Animal extends AbstractMapElement
         observers.remove(observer);
     }
 
-    public void positionChanged(Vector2d newPosition)
+    private void positionChanged(Vector2d oldPosition)
     {
         for (IPositionChangeObserver observer : observers)
         {
-            observer.positionChanged(this, position, newPosition);
+            observer.positionChanged(this, oldPosition);
         }
     }
 }
