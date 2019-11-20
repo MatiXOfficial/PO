@@ -6,14 +6,17 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
 {
     protected Map<Vector2d, Animal> animals;
     protected LinkedList<Animal> seq;
+    protected MapBoundary mapBoundary;
+
     protected Vector2d lowerLeft;
     protected Vector2d upperRight;
 
     public AbstractWorldMap()
     {
+        lowerLeft = new Vector2d(0, 0);
         animals = new HashMap<>();
         seq = new LinkedList<>();
-        lowerLeft = new Vector2d(0, 0);
+        mapBoundary = new MapBoundary();
     }
 
     public int getAnimalSize()
@@ -27,7 +30,9 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
         {
             animals.put(animal.getPosition(), animal);
             seq.add(animal);
+            mapBoundary.addObject(animal);
             animal.addObserver(this);
+            animal.addObserver(mapBoundary);
             return true;
         }
         else
@@ -63,13 +68,18 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
         return null;
     }
 
-    public void positionChanged(Vector2d oldPosition, Vector2d newPosition)
+    public String toString()
     {
-        if (!newPosition.equals(oldPosition))
+        MapVisualizer visualizer = new MapVisualizer(this);
+        return visualizer.draw(mapBoundary.getLowerLeft(), mapBoundary.getUpperRight());
+    }
+
+    public void positionChanged(IMapElement animal, Vector2d oldPosition, Vector2d newPosition)
+    {
+        if (!oldPosition.equals(newPosition))
         {
-            Animal animal = animals.get(oldPosition);
             animals.remove(oldPosition);
-            animals.put(newPosition, animal);
+            animals.put(newPosition, (Animal)animal);
         }
     }
 }

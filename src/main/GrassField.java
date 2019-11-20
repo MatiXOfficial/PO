@@ -9,7 +9,7 @@ public class GrassField extends AbstractWorldMap
     {
         super();
         upperRight = new Vector2d((int)Math.sqrt(n*10), (int)Math.sqrt(n*10));
-        grasses = new LinkedList<Grass>();
+        grasses = new LinkedList<>();
         for (int i = 0; i < n; i++)
             addGrass(lowerLeft, upperRight);
     }
@@ -21,10 +21,11 @@ public class GrassField extends AbstractWorldMap
             int x = lowerLeft.x + (int) (Math.random() * (upperRight.x - lowerLeft.x));
             int y = lowerLeft.y + (int) (Math.random() * (upperRight.y - lowerLeft.y));
             Vector2d pos = new Vector2d(x, y);
-            //if (objectAt(pos) == null)
             if (!isOccupied(pos))
             {
-                grasses.add(new Grass(pos));
+                Grass grass = new Grass(pos);
+                grasses.add(grass);
+                mapBoundary.addObject(grass);
                 return;
             }
         }
@@ -59,41 +60,5 @@ public class GrassField extends AbstractWorldMap
                 return grass;
         }
         return null;
-    }
-
-    public String toString()
-    {
-        MapVisualizer visualizer = new MapVisualizer(this);
-        return visualizer.draw(lowerLeftString(), upperRightString());
-    }
-
-    private Vector2d lowerLeftString()
-    {
-        Vector2d result = new Vector2d(Integer.MAX_VALUE, Integer.MAX_VALUE);
-        for (Animal animal : animals.values())
-        {
-            result = result.lowerLeft(animal.getPosition());
-        }
-
-        for (Grass grass : grasses)
-        {
-            result = result.lowerLeft(grass.getPosition());
-        }
-        return result;
-    }
-
-    private Vector2d upperRightString()
-    {
-        Vector2d result = new Vector2d(Integer.MIN_VALUE, Integer.MIN_VALUE);
-        for (Animal animal : animals.values())
-        {
-            result = result.upperRight(animal.getPosition());
-        }
-
-        for (Grass grass : grasses)
-        {
-            result = result.upperRight(grass.getPosition());
-        }
-        return result;
     }
 }

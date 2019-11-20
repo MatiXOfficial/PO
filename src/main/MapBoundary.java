@@ -1,30 +1,60 @@
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class MapBoundary implements IPositionChangeObserver
 {
-    Vector2d lowerLeft;
-    Vector2d upperRight;
+    private SortedSet<IMapElement> ordX;
+    private SortedSet<IMapElement> ordY;
 
-    private LinkedList<IMapElement> ordX;
-    private LinkedList<IMapElement> ordY;
+    public MapBoundary()
+    {
+        ordX = new TreeSet<>(IMapElement::compareTox);
+        ordY = new TreeSet<>(IMapElement::compareToy);
+    }
 
-    public void AddObject(IMapElement object)
+    public Vector2d getLowerLeft()
     {
         if (ordX.isEmpty())
         {
-            ordX.add(object);
-            ordY.add(object);
+            return new Vector2d(0, 0);
         }
-        else
-        {
-            int i = 0;
-            while (i < ordX.size() && object.getPosition().x < ordX.get(i).getPosition().x)
-                i++;
-        }
+        return new Vector2d(ordX.first().getPosition().x, ordY.first().getPosition().y);
     }
 
-    public void positionChanged(Vector2d oldPosition, Vector2d newPosition)
+    public Vector2d getUpperRight()
     {
-        ;
+        if (ordY.isEmpty())
+        {
+            return new Vector2d(0, 0);
+        }
+        return new Vector2d(ordX.last().getPosition().x, ordY.last().getPosition().y);
+    }
+
+    public void addObject(IMapElement object)
+    {
+        ordX.add(object);
+        ordY.add(object);
+    }
+
+    public void deleteObject(IMapElement object)
+    {
+        ordX.remove(object);
+        ordY.remove(object);
+    }
+
+    public void updateObject(IMapElement object)
+    {
+        deleteObject(object);
+        addObject(object);
+    }
+
+    public void positionChanged(IMapElement object, Vector2d oldPosition, Vector2d newPosition)
+    {
+        if (!newPosition.equals(oldPosition))
+        {
+            updateObject(object);
+        }
     }
 }

@@ -1,16 +1,15 @@
 import java.util.LinkedList;
 
-public class Animal implements IMapElement
+public class Animal extends AbstractMapElement
 {
-    protected Vector2d position;
     private MapDirection orientation;
     private IWorldMap map;
     private LinkedList<IPositionChangeObserver> observers;
 
     public Animal(IWorldMap map, Vector2d initialPosition)
     {
+        super(initialPosition);
         this.map = map;
-        this.position = initialPosition;
         this.orientation = MapDirection.NORTH;
         observers = new LinkedList<>();
     }
@@ -72,7 +71,7 @@ public class Animal implements IMapElement
     {
         for (IPositionChangeObserver observer : observers)
         {
-            observer.positionChanged(position, newPosition);
+            observer.positionChanged(this, position, newPosition);
         }
     }
 }

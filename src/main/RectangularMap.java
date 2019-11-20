@@ -2,6 +2,8 @@ import java.util.LinkedList;
 
 public class RectangularMap extends AbstractWorldMap
 {
+    private Vector2d upperRight;
+
     public RectangularMap(int width, int height)
     {
         super();
@@ -20,11 +22,5 @@ public class RectangularMap extends AbstractWorldMap
         if (!isInTable(position))
             return false;
         return super.canMoveTo(position);
-    }
-
-    public String toString()
-    {
-        MapVisualizer visualizer = new MapVisualizer(this);
-        return visualizer.draw(lowerLeft, upperRight);
     }
 }
